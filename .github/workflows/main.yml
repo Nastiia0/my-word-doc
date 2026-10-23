@@ -1,0 +1,18 @@
+name: Generate Word Doc
+on: workflow_dispatch
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-20.04
+    container:
+      image: pandoc/latex:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Pandoc
+        run: |
+          pandoc -f markdown -t docx -o "my-document.docx" --toc "./README.md"
+      - name: Upload Word Doc
+        uses: actions/upload-artifact@v3
+        with:
+          name: Word Document
+          path: "my-document.docx"
