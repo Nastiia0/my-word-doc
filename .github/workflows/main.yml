@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   convert_via_pandoc:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest.
     container:
       image: pandoc/latex:latest
     steps:
